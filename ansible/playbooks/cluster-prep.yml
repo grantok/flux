@@ -1,0 +1,19 @@
+---
+- hosts:
+    - master
+    - worker
+  become: true
+  gather_facts: true
+  any_errors_fatal: true
+  pre_tasks:
+    - name: Pausing for 5 seconds...
+      ansible.builtin.pause:
+        seconds: 5
+  tasks:
+    - name: ResizeLVM
+      lvol:
+        vg: ubuntu-vg
+        lv: ubuntu-lv
+        size: 100%FREE
+        resizefs: true
+        force: yes
