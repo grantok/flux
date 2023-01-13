@@ -8,7 +8,7 @@ spec:
   interval: 30m
   ref:
     branch: main
-  url: "git@github.com:grantok/flux.git"
+  url: "ssh://git@github.com:grantok/flux.git"
   ignore: |
     # exclude all
     /*
