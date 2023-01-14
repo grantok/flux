@@ -18,6 +18,8 @@ includes:
   cluster: .taskfiles/ClusterTasks.yml
   precommit: .taskfiles/PrecommitTasks.yml
   terraform: .taskfiles/TerraformTasks.yml
+  es: .taskfiles/ExternalSecretsTasks.yaml
+  fl: .taskfiles/FluxTasks.yaml
 
 tasks:
 
