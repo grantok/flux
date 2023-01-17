@@ -5,7 +5,7 @@ metadata:
   name: &app longhorn
   namespace: storage
 spec:
-  # releaseName: longhorn
+  releaseName: longhorn
   interval: 5m
   chart:
     spec:
@@ -17,59 +17,36 @@ spec:
         name: longhorn-charts
         namespace: flux-system
       interval: 5m
-  install:
-    createNamespace: true
-    remediation:
-      retries: 3
-  upgrade:
-    cleanupOnFail: true
-    remediation:
-      retries: 3
-  uninstall:
-    keepHistory: false
   values:
     persistence:
       defaultClass: true
       defaultClassReplicaCount: 3
-      reclaimPolicy: Retain
+      defaultFsType: ext4
+      reclaimPolicy: Delete
     defaultSettings:
       backupstorePollInterval: 300
-      # backupTarget: nfs://${NFS_SERVER}:/volume3/kubernetes/LonghornBackup
-      createDefaultDiskLabeledNodes: true
+      defaultDataPath: /mnt/longhorn
+      # backupTarget: nfs://${NAS_ADDR}:/mnt/external/longhorn-backups
       defaultDataLocality: best-effort
-      nodeDownPodDeletionPolicy: delete-both-statefulset-and-deployment-pod
-      concurrentAutomaticEngineUpgradePerNodeLimit: 2
-      storageMinimalAvailablePercentage: 5
-      storageOverProvisioningPercentage: 100
       defaultReplicaCount: 3
       defaultLonghornStaticStorageClass: longhorn
-      ## Sollte geändert werden
-      replicaSoftAntiAffinity: false
-      allowVolumeCreationWithDegradedAvailability: false
+      createDefaultDiskLabeledNodes: true
+      nodeDownPodDeletionPolicy: delete-both-statefulset-and-deployment-pod
+      concurrentAutomaticEngineUpgradePerNodeLimit: 1
+      storageMinimalAvailablePercentage: 10
+      StorageOverProvisioningPercentage: 110
     ingress:
       enabled: true
       ingressClassName: nginx
-      host: &host "{{ .Release.Name }}.${SECRET_DOMAIN}"
+      host: "longhorn.${SECRET_DOMAIN}"
+      tls: true
+      tlsSecret: "longhorn-tls"
       path: /
-      tls:
-        - hosts:
-            - *host
-      tlsSecret: longhorn
       annotations:
-        # coredns.io/hostname: "longhorn.${SECRET_DOMAIN}"
-        cert-manager.io/cluster-issuer: letsencrypt-production
+        cert-manager.io/cluster-issuer: "letsencrypt-production"
+        nginx.ingress.kubernetes.io/whitelist-source-range: "10.0.0.0/8,172.16.0.0/12,192.168.0.0/16"
         hajimari.io/enable: "true"
         hajimari.io/icon: "cow"
-        hajimari.io/group: "storage"
-        hajimari.io/appName: "*host"
-        # kubernetes.io/ingress.class: nginx
-        # type of authentication
-        # nginx.ingress.kubernetes.io/auth-type: basic
-        # prevent the controller from redirecting (308) to HTTPS
-        # nginx.ingress.kubernetes.io/ssl-redirect: 'false'
-        # name of the secret that contains the user/password definitions
-        # nginx.ingress.kubernetes.io/auth-secret: basic-auth
-        # message to display with an appropriate context why the authentication is required
-        # nginx.ingress.kubernetes.io/auth-realm: 'Authentication Required '
-        # custom max body size for file uploading like backing image uploading
-        # nginx.ingress.kubernetes.io/proxy-body-size: 10000m
+        hajimari.io/appName: "Longhorn"
+        hajimari.io/targetBlank: "true"
+        hajimari.io/info: "Storage"
