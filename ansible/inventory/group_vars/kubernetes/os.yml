@@ -31,3 +31,4 @@ ubuntu:
     - socat
     - python3-kubernetes
     - python3-yaml
+    - nfs-common
