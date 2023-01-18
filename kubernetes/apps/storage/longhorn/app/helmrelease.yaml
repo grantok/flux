@@ -18,6 +18,8 @@ spec:
         namespace: flux-system
       interval: 5m
   values:
+    annotations:
+      node.longhorn.io/default-node-tags: '["nvme"]'
     persistence:
       defaultClass: true
       defaultClassReplicaCount: 3
