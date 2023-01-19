@@ -6,4 +6,4 @@ namespace: media
 resources:
   - ./externalsecret.yaml
   - ./helmrelease.yaml
-  - ./nfs-pvc.yaml
+  # - ./nfs-pvc.yaml
