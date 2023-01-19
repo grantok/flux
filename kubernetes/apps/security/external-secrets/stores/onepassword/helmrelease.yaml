@@ -41,7 +41,6 @@ spec:
           secretKeyRef:
             name: onepassword-connect-secret
             key: 1password-credentials.json
-            namespace: security
     service:
       main:
         ports:
