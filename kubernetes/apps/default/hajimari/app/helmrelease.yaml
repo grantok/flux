@@ -36,6 +36,9 @@ spec:
       namespaceSelector:
         matchNames:
           - default
+          - longhorn
+          - security
+          - media
     ingress:
       main:
         enabled: true

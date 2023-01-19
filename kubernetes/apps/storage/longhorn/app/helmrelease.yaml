@@ -28,7 +28,7 @@ spec:
     defaultSettings:
       backupstorePollInterval: 300
       defaultDataPath: /mnt/longhorn
-      # backupTarget: nfs://${NAS_ADDR}:/mnt/external/longhorn-backups
+      backupTarget: nfs://${NAS_ADDR}:/mnt/user/nfs-backup
       defaultDataLocality: best-effort
       defaultReplicaCount: 3
       defaultLonghornStaticStorageClass: longhorn
