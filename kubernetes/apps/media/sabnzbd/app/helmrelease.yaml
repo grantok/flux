@@ -83,16 +83,16 @@ spec:
         labels:
           snapshot.home.arpa/enabled: "true"
     persistence:
+      # downloads:
+      #   enabled: true
+      #   type: pvc
+      #   existingClaim: pvc-nfs-download
       downloads:
         enabled: true
-        type: pvc
-        existingClaim: pvc-nfs-download
-      # downloads:
-        # enabled: true
-        # type: nfs
-        # server: ${NAS_ADDR}
-        # path: /user/downloads
-        # mountPath: /downloads
+        type: nfs
+        server: ${NAS_ADDR}
+        path: /user/downloads
+        mountPath: /downloads
       # media:
       #   enabled: true
       #   type: nfs
