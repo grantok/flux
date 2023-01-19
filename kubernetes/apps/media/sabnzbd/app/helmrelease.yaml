@@ -35,12 +35,12 @@ spec:
       TZ: ${TIMEZONE}
       SABNZBD__PORT: &port 80
       SABNZBD__HOST_WHITELIST_ENTRIES: >-
-        *app,
-        *app.default,
-        *app.default.svc,
-        *app.default.svc.cluster,
-        *app.default.svc.cluster.local,
-        *app.${SECRET_DOMAIN}
+        sabnzbd,
+        sabnzbd.default,
+        sabnzbd.default.svc,
+        sabnzbd.default.svc.cluster,
+        sabnzbd.default.svc.cluster.local,
+        sabnzbd.${SECRET_DOMAIN}
     envFrom:
       - secretRef:
           name: sabnzbd-secret
