@@ -41,6 +41,7 @@ spec:
           secretKeyRef:
             name: onepassword-connect-secret
             key: 1password-credentials.json
+            namespace: security
     service:
       main:
         ports:
@@ -53,7 +54,7 @@ spec:
         spec:
           httpGet:
             path: /heartbeat
-            port: *port
+            eort: *port
           initialDelaySeconds: 15
           periodSeconds: 30
           failureThreshold: 3
