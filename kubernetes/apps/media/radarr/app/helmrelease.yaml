@@ -1,8 +1,9 @@
 ---
+# yaml-language-server: $schema=https://kubernetes-schemas.devbu.io/helmrelease_v2beta1.json
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: &app sabnzbd
+  name: radarr
   namespace: media
 spec:
   interval: 15m
@@ -15,7 +16,7 @@ spec:
         name: bjw-s
         namespace: flux-system
 
-  #
+  # stateful set
   maxHistory: 3
   install:
     createNamespace: true
@@ -35,22 +36,18 @@ spec:
         reloader.stakater.com/auto: "true"
 
     image:
-      repository: ghcr.io/onedr0p/sabnzbd
-      tag: 3.7.1@sha256:e1a805ab246712b2c9a834b88ffefd77aba89b2ffcfdf1a9535333fcb4a60f91
+      repository: ghcr.io/onedr0p/radarr-develop
+      tag: 4.3.2.6857@sha256:722b5c7a3809841caa711a2339dbe58e6d437c79ef147bdefb2275b422a9b106
 
     env:
       TZ: ${TIMEZONE}
-      SABNZBD__PORT: &port 80
-      SABNZBD__HOST_WHITELIST_ENTRIES: >-
-        sabnzbd,
-        sabnzbd.default,
-        sabnzbd.default.svc,
-        sabnzbd.default.svc.cluster,
-        sabnzbd.default.svc.cluster.local,
-        sabnzbd.${SECRET_DOMAIN}
+      RADARR__INSTANCE_NAME: Radarr
+      RADARR__PORT: &port 80
+      RADARR__APPLICATION_URL: "https://{{ .Release.Name }}.${SECRET_DOMAIN}"
+      RADARR__LOG_LEVEL: info
     envFrom:
       - secretRef:
-          name: sabnzbd-secret
+          name: radarr-secret
 
     service:
       main:
@@ -62,16 +59,15 @@ spec:
       main:
         enabled: true
         ingressClassName: nginx
-        tlsSecret: "sabnzbd-tls"
         annotations:
           cert-manager.io/cluster-issuer: letsencrypt-production
           nginx.ingress.kubernetes.io/configuration-snippet: |
             proxy_set_header Accept-Encoding "";
-            sub_filter '</head>' '<link rel="stylesheet" type="text/css" href="https://theme-park.${SECRET_DOMAIN}/css/base/sabnzbd/${THEME}.css"></head>';
+            sub_filter '</head>' '<link rel="stylesheet" type="text/css" href="https://theme-park.${SECRET_DOMAIN}/css/base/radarr/${THEME}"></head>';
             sub_filter_once on;
-          hajimari.io/icon: mdi:download
+          hajimari.io/icon: mdi:filmstrip
         hosts:
-          - host: &host "{{ .Release.Name }}.${SECRET_DOMAIN}"
+          - host: *host
             paths:
               - path: /
                 pathType: Prefix
@@ -91,24 +87,36 @@ spec:
       - name: config
         mountPath: /config
         accessMode: ReadWriteOnce
-        size: 1Gi
+        size: 15Gi
         storageClass: longhorn
         labels:
           snapshot.home.arpa/enabled: "true"
+
     persistence:
+      movies:
+        enabled: true
+        type: nfs
+        server: ${NAS_ADDR}
+        path: /mnt/user/movies
+        mountPath: /movies
       downloads:
         enabled: true
         type: nfs
         server: ${NAS_ADDR}
         path: /mnt/user/downloads
         mountPath: /downloads
-      incomplete:
-        enabled: true
-        type: emptyDir
+      # scripts:
+      #   enabled: true
+      #   type: configMap
+      #   name: radarr-configmap
+      #   subPath: pushover-notify.sh
+      #   mountPath: /scripts/pushover-notify.sh
+      #   defaultMode: 0775
+      #   readOnly: true
 
     resources:
       requests:
         cpu: 10m
         memory: 250Mi
       limits:
-        memory: 8000Mi
+        memory: 2000Mi
