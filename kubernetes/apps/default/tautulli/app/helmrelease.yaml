@@ -63,7 +63,7 @@ spec:
         tls:
           - hosts:
               - *host
-            tlsSecret: "tautulli-tls"
+            secretName: "tautulli-tls"
 
     podSecurityContext:
       runAsUser: 99
