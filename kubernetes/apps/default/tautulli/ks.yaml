@@ -9,7 +9,7 @@ metadata:
 spec:
   dependsOn:
     - name: cluster-apps-longhorn
-  path: ./kubernetes/apps/media/tautulli/app
+  path: ./kubernetes/apps/default/tautulli/app
   prune: true
   sourceRef:
     kind: GitRepository
@@ -18,7 +18,7 @@ spec:
     - apiVersion: helm.toolkit.fluxcd.io/v2beta1
       kind: HelmRelease
       name: tautulli
-      namespace: media
+      namespace: default
   interval: 30m
   retryInterval: 1m
   timeout: 3m
