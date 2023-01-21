@@ -9,7 +9,7 @@ metadata:
 spec:
   dependsOn:
     - name: cluster-apps-longhorn
-  path: ./kubernetes/apps/medial/tautulli/app
+  path: ./kubernetes/apps/media/tautulli/app
   prune: true
   sourceRef:
     kind: GitRepository
