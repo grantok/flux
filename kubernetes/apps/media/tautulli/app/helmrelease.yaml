@@ -60,12 +60,10 @@ spec:
               - path: /
                 pathType: Prefix
 
-        tls: true
-        tlsSecret: "tautulli-tls"
-        # tls:
-        #   - hosts:
-        #       - *host
-        #     tlsSecret: "tautulli-tls"
+        tls:
+          - hosts:
+              - *host
+            tlsSecret: "tautulli-tls"
 
     podSecurityContext:
       runAsUser: 99
