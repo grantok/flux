@@ -40,7 +40,7 @@ spec:
 
     env:
       TZ: ${TIMEZONE}
-      PORT: &port 80
+      PORT: 80
       APPLICATION_URL: "https://{{ .Release.Name }}.${SECRET_DOMAIN}"
       LOG_LEVEL: info
 
@@ -48,7 +48,7 @@ spec:
       main:
         ports:
           http:
-            port: *port
+            port: 80
 
     ingress:
       main:
@@ -78,7 +78,7 @@ spec:
 
     volumeClaimTemplates:
       - name: config
-        mountPath: /config
+        mountPath: /app/config
         accessMode: ReadWriteOnce
         size: 1Gi
         storageClass: longhorn
