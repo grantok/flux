@@ -66,6 +66,7 @@ spec:
             paths:
               - path: /
                 pathType: Prefix
+        tlsSecret: "overseerr-tls"
         tls:
           - hosts:
               - *host

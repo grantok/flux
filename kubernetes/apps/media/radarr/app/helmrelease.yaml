@@ -70,6 +70,7 @@ spec:
             paths:
               - path: /
                 pathType: Prefix
+        tlsSecret: "radarr-tls"
         tls:
           - hosts:
               - *host
