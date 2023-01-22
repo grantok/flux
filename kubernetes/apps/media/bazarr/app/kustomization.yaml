@@ -1,0 +1,29 @@
+---
+# yaml-language-server: $schema=https://json.schemastore.org/kustomization
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: media
+resources:
+  - ./externalsecret.yaml
+  - ./helmrelease.yaml
+patchesStrategicMerge:
+  - ./patches/subcleaner.yaml
+patches:
+  - path: https://raw.githubusercontent.com/grantok/flux/master/kubernetes/flux/config/patch-ss.yaml
+    target:
+      kind: HelmRelease
+  - path: https://raw.githubusercontent.com/grantok/flux/master/kubernetes/flux/config/patch-chart-with-ingress.yaml
+    target:
+      kind: HelmRelease
+  - path: https://raw.githubusercontent.com/grantok/flux/master/kubernetes/flux/config/patch-nfs-download.yaml
+    target:
+      kind: HelmRelease
+  - path: https://raw.githubusercontent.com/grantok/flux/master/kubernetes/flux/config/patch-nfs-tv.yaml
+    target:
+      kind: HelmRelease
+  - path: https://raw.githubusercontent.com/grantok/flux/master/kubernetes/flux/config/patch-nfs-movies.yaml
+    target:
+      kind: HelmRelease
+  - path: https://raw.githubusercontent.com/grantok/flux/master/kubernetes/flux/config/patch-unraid-perms.yaml
+    target:
+      kind: HelmRelease
