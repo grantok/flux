@@ -9,6 +9,20 @@ spec:
     image:
       repository: docker.io/jmalloc/echo-server
       tag: 0.3.4
+    ingress:
+      main:
+        annotations:
+          external-dns.alpha.kubernetes.io/target: "ipv4.${SECRET_DOMAIN}"
+          external-dns.home.arpa/enabled: "true"
+          hajimari.io/icon: echo-server
+        hosts:
+          - host: &host "{{ .Release.Name }}.${SECRET_DOMAIN}"
+            paths:
+              - path: /
+                pathType: Prefix
+        tls:
+          - hosts:
+              - *host
     service:
       main:
         ports:

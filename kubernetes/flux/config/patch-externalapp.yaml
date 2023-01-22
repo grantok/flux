@@ -10,22 +10,21 @@
         name: bjw-s
         namespace: flux-system
 - op: add
-  path: /spec/values/ingress
-  value:
-    main:
-      enabled: true
-      ingressClassName: nginx
-      hosts:
-        # host: &host "{{ .Release.Name }}.${SECRET_DOMAIN}"
-        host: echo-server.monstersarereal.net
-        paths:
-          - path: /
-            pathType: Prefix
-      tls:
-        - hosts:
-            # - *host
-            - echo-server.monstersarereal.net
-      annotations:
-        external-dns.alpha.kubernetes.io/target: "ipv4.${SECRET_DOMAIN}"
-        external-dns.home.arpa/enabled: "true"
-        hajimari.io/icon: 'crosshairs-question'
+  path: /spec/values/ingress/main/enabled
+  value: true
+- op: add
+  path: /spec/values/ingress/main/ingressClassName
+  value: nginx
+    # main:
+    #   enabled: true
+    #   ingressClassName: nginx
+      # hosts:
+      #   # host: &host "{{ .Release.Name }}.${SECRET_DOMAIN}"
+      #   host: echo-server.monstersarereal.net
+      #   paths:
+      #     - path: /
+      #       pathType: Prefix
+      # tls:
+      #   - hosts:
+      #       # - *host
+      #       - echo-server.monstersarereal.net
