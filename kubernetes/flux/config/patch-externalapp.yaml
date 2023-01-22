@@ -14,20 +14,14 @@
   value:
     enabled: true
     ingressClassName: nginx
-- op: add
-  path: /spec/values/ingress/main/hosts
-  value:
-    host: &host "{{ .Release.Name }}.${SECRET_DOMAIN}"
-    paths:
-      - path: /
-        pathType: Prefix
-- op: add
-  path: /spec/values/ingress/main/tls
-  value:
-    - hosts:
-        - *host
-- op: add
-  path: /spec/values/ingress/main/annotations
-  value:
-    external-dns.alpha.kubernetes.io/target: "ipv4.${SECRET_DOMAIN}"
-    external-dns.home.arpa/enabled: "true"
+    hosts:
+      host: &host "{{ .Release.Name }}.${SECRET_DOMAIN}"
+      paths:
+        - path: /
+          pathType: Prefix
+    tls:
+      - hosts:
+          - *host
+    annotations:
+      external-dns.alpha.kubernetes.io/target: "ipv4.${SECRET_DOMAIN}"
+      external-dns.home.arpa/enabled: "true"
