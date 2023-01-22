@@ -11,9 +11,9 @@ patches:
   - path: https://raw.githubusercontent.com/grantok/flux/master/kubernetes/flux/config/patch-externalapp.yaml
     target:
       name: echo-server
-  # - target:
-  #     name: echo-server
-  #   patch: |-
-  #     - op: add
-  #       path: /spec/values/ingress/main/annotations/hajimari.io/icon
-  #       value: video-input-antenna
+  - patch: |-
+      - op: add
+        path: /spec/values/ingress/main/annotations/hajimari.io/icon
+        value: video-input-antenna
+    target:
+      name: echo-server
