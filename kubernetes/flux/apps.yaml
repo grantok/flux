@@ -40,3 +40,31 @@ spec:
                 name: cluster-secrets
       target:
         labelSelector: substitution.flux.home.arpa/enabled=true
+
+    - patch: |-
+        interval: 15m
+        maxHistory: 3
+        install:
+          createNamespace: true
+        remediation:
+          retries: 3
+        upgrade:
+          cleanupOnFail: true
+        remediation:
+          retries: 3
+        uninstall:
+          keepHistory: false
+      target:
+        labelSelector: substitution.flux.home.ss/enabled=true
+
+    - patch: |-
+        chart:
+          spec:
+            chart: app-template
+            version: 1.2.1
+            sourceRef:
+              kind: HelmRepository
+              name: bjw-s
+              namespace: flux-system
+      target:
+        labelSelector: substitution.flux.home.apptemplate/enabled=true
