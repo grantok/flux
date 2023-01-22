@@ -45,7 +45,7 @@ spec:
         labels:
           snapshot.home.arpa/enabled: "true"
 
-    persistence:
+    # persistence:
       # scripts:
       #   enabled: true
       #   type: configMap
@@ -54,6 +54,10 @@ spec:
       #   mountPath: /scripts/pushover-notify.sh
       #   defaultMode: 0775
       #   readOnly: true
+    persistence:
+      incomplete:
+        enabled: true
+        type: emptyDir
 
     resources:
       requests:

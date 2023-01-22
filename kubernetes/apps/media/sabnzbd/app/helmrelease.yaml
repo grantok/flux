@@ -55,6 +55,7 @@ spec:
         storageClass: longhorn
         labels:
           snapshot.home.arpa/enabled: "true"
+
     persistence:
       incomplete:
         enabled: true
