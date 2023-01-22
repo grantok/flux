@@ -44,7 +44,7 @@ spec:
         labels:
           snapshot.home.arpa/enabled: "true"
 
-    # persistence:
+    persistence:
       # scripts:
       #   enabled: true
       #   type: configMap
