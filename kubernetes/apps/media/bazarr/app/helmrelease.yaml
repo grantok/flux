@@ -12,7 +12,7 @@ spec:
 
     env:
       TZ: ${TIMEZONE}
-      BAZARR__PORT: &port 80
+      BAZARR__PORT: &port 6767
     envFrom:
       - secretRef:
           name: sonarr-secret
