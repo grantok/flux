@@ -29,13 +29,6 @@ spec:
       readiness: *probes
       startup:
         enabled: false
-    ingress:
-      main:
-        annotations:
-          # cert-manager.io/cluster-issuer: letsencrypt-staging
-          external-dns.alpha.kubernetes.io/target: "ipv4.${SECRET_DOMAIN}"
-          external-dns.home.arpa/enabled: "true"
-          hajimari.io/icon: video-input-antenna
     resources:
       requests:
         cpu: 5m

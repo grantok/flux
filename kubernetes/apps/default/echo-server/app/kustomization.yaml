@@ -5,9 +5,16 @@ namespace: default
 resources:
   - ./helmrelease.yaml
 patches:
-  - path: https://raw.githubusercontent.com/grantok/flux/master/kubernetes/apps/patch-ss.yaml
+  - path: https://raw.githubusercontent.com/grantok/flux/master/kubernetes/flux/global_patches/patch-ss.yaml
     target:
       name: echo-server
-  - path: https://raw.githubusercontent.com/grantok/flux/master/kubernetes/apps/patch-apptemplate.yaml
+  - path: https://raw.githubusercontent.com/grantok/flux/master/kubernetes/flux/global_patches/patch-externalapp.yaml
     target:
       name: echo-server
+  - target:
+      name: echo-server
+    patch: |-
+      - op: add
+        path: /spec/values/ingress/main/annotations
+        value:
+          hajimari.io/icon: video-input-antenna
