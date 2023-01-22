@@ -5,3 +5,10 @@ kind: Kustomization
 namespace: default
 resources:
   - ./helmrelease.yaml
+patches:
+  - path: https://raw.githubusercontent.com/grantok/flux/master/kubernetes/flux/config/patch-ss.yaml
+    target:
+      name: theme-park
+  - path: https://raw.githubusercontent.com/grantok/flux/master/kubernetes/flux/config/patch-chart-with-ingress.yaml
+    target:
+      name: theme-park

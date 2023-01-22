@@ -6,28 +6,24 @@ metadata:
   namespace: default
 spec:
   values:
+
     image:
       repository: docker.io/jmalloc/echo-server
       tag: 0.3.4
+
     ingress:
       main:
         annotations:
           external-dns.alpha.kubernetes.io/target: "ipv4.${SECRET_DOMAIN}"
           external-dns.home.arpa/enabled: "true"
           hajimari.io/icon: video-input-antenna
-        # hosts:
-        #   - host: &host "{{ .Release.Name }}.${SECRET_DOMAIN}"
-        #     paths:
-        #       - path: /
-        #         pathType: Prefix
-        # tls:
-        #   - hosts:
-        #       - *host
+
     service:
       main:
         ports:
           http:
             port: &port 8080
+
     probes:
       liveness: &probes
         enabled: true
@@ -43,6 +39,7 @@ spec:
       readiness: *probes
       startup:
         enabled: false
+
     resources:
       requests:
         cpu: 5m
