@@ -15,6 +15,5 @@ patches:
       name: echo-server
     patch: |-
       - op: add
-        path: /spec/values/ingress/main/annotations
-        value:
-          hajimari.io/icon: video-input-antenna
+        path: /spec/values/ingress/main/annotations/hajimari.io/icon
+        value: video-input-antenna
