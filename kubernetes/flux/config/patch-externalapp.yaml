@@ -10,18 +10,19 @@
         name: bjw-s
         namespace: flux-system
 - op: add
-  path: /spec/values/ingress/main
-  value: |-
-    enabled: true
-    ingressClassName: nginx
-    hosts:
-      host: &host "{{ .Release.Name }}.${SECRET_DOMAIN}"
-      paths:
-        - path: /
-          pathType: Prefix
-    tls:
-      - hosts:
-          - *host
-    annotations:
-      external-dns.alpha.kubernetes.io/target: "ipv4.${SECRET_DOMAIN}"
-      external-dns.home.arpa/enabled: "true"
+  path: /spec/values/ingress
+  value:
+    main:
+      enabled: true
+      ingressClassName: nginx
+      hosts:
+        host: &host "{{ .Release.Name }}.${SECRET_DOMAIN}"
+        paths:
+          - path: /
+            pathType: Prefix
+      tls:
+        - hosts:
+            - *host
+      annotations:
+        external-dns.alpha.kubernetes.io/target: "ipv4.${SECRET_DOMAIN}"
+        external-dns.home.arpa/enabled: "true"
