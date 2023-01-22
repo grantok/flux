@@ -12,7 +12,7 @@ patches:
     target:
       name: echo-server
   - patch: |-
-      - op: replace
+      - op: add
         path: /spec/values/ingress/main/annotations/hajimari.io/icon
         value: video-input-antenna
     target:
