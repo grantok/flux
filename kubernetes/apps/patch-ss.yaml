@@ -20,7 +20,7 @@
 - op: add
   path: /spec/uninstall
   value:
-    keepHisory: false
+    keepHistory: false
 - op: add
   path: /spec/values/controller
   value:
