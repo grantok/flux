@@ -9,19 +9,19 @@
         kind: HelmRepository
         name: bjw-s
         namespace: flux-system
-- op: add
+- op: replace
   path: /spec/values/ingress/main
   value:
     enabled: true
     ingressClassName: nginx
-- op: add
+- op: replace
   path: /spec/values/ingress/main/hosts
   value:
     host: &host "{{ .Release.Name }}.${SECRET_DOMAIN}"
     paths:
       - path: /
         pathType: Prefix
-- op: add
+- op: replace
   path: /spec/values/ingress/main/tls
   value:
     - hosts:
