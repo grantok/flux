@@ -1,7 +1,7 @@
-apiVersion: helm.toolkit.fluxcd.io/v2beta1
-kind: HelmRelease
-spec:
-  chart:
+---
+- op: add
+  path: /spec/chart
+  value:
     spec:
       chart: app-template
       version: 1.2.1
@@ -9,3 +9,20 @@ spec:
         kind: HelmRepository
         name: bjw-s
         namespace: flux-system
+- op: add
+  path: /spec/values/ingress/main
+  value:
+    enabled: true
+    ingressClassName: nginx
+- op: add
+  path: /spec/values/ingress/main/hosts
+  value:
+    host: &host "{{ .Release.Name }}.${SECRET_DOMAIN}"
+    paths:
+      - path: /
+        pathType: Prefix
+- op: add
+  path: /spec/values/ingress/main/tls
+  value:
+    - hosts:
+        - *host

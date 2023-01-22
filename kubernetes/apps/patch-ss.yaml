@@ -1,19 +1,28 @@
-apiVersion: helm.toolkit.fluxcd.io/v2beta1
-kind: HelmRelease
-spec:
-  interval: 15m
-  maxHistory: 3
-  install:
+---
+- op: add
+  path: /spec/interval
+  value: 15m
+- op: add
+  path: /spec/maxHistory
+  value: 3
+- op: add
+  path: /spec/install
+  value:
     createNamespace: true
     remediation:
       retries: 3
-  upgrade:
+- op: add
+  path: /spec/upgrade
+  value:
     cleanupOnFail: true
     remediation:
       retries: 3
-  uninstall:
-    keepHistory: false
-  values:
-    controller:
-      replicas: 3
-      strategy: RollingUpdate
+- op: add
+  path: /spec/uninstall
+  value:
+    keepHisory: false
+- op: add
+  path: /spec/values/controller
+  value:
+    replicas: 1
+    strategy: RollingUpdate

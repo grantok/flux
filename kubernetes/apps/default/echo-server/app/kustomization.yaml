@@ -5,9 +5,9 @@ namespace: default
 resources:
   - ./helmrelease.yaml
 patches:
-  - path: https://raw.githubusercontent.com/grantok/flux/master/kubernetes/apps/default/echo-server/patch-ss.yaml
+  - path: https://raw.githubusercontent.com/grantok/flux/master/kubernetes/apps/patch-ss.yaml
     target:
       name: echo-server
-  - path: https://raw.githubusercontent.com/grantok/flux/master/kubernetes/apps/default/echo-server/patch-apptemplate.yaml
+  - path: https://raw.githubusercontent.com/grantok/flux/master/kubernetes/apps/patch-apptemplate.yaml
     target:
       name: echo-server
