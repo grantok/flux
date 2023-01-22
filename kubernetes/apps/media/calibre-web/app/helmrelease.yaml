@@ -12,6 +12,7 @@ spec:
 
     env:
       CACHE_DIR: /cache
+      TZ: ${TIMEZONE}
 
     service:
       main:
@@ -31,7 +32,7 @@ spec:
 
     volumeClaimTemplates:
       - name: config
-        mountPath: /app/config
+        mountPath: /config
         accessMode: ReadWriteOnce
         size: 1Gi
         storageClass: longhorn
