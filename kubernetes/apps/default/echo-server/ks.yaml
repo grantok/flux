@@ -20,10 +20,3 @@ spec:
   interval: 30m
   retryInterval: 1m
   timeout: 3m
-  patchesJson6902:
-    - target:
-        name: echo-server
-      path: ./kubernetes/apps/default/echo-server/patch-ss.yaml
-    - target:
-        name: echo-server
-      path: ./kubernetes/apps/default/echo-server/patch-apptemplate.yaml

@@ -1,7 +1,7 @@
 ---
 - op: add
   path: /spec/chart
-  value: |-
+  value:
     spec:
       chart: app-template
       version: 1.2.1
