@@ -6,4 +6,16 @@ namespace: media
 resources:
   - ./externalsecret.yaml
   - ./helmrelease.yaml
-  # - ./nfs-pvc.yaml
+patches:
+  - path: https://raw.githubusercontent.com/grantok/flux/master/kubernetes/flux/config/patch-ss.yaml
+    target:
+      kind: HelmRelease
+  - path: https://raw.githubusercontent.com/grantok/flux/master/kubernetes/flux/config/patch-chart-with-ingress.yaml
+    target:
+      kind: HelmRelease
+  - path: https://raw.githubusercontent.com/grantok/flux/master/kubernetes/flux/config/patch-nfs-download.yaml
+    target:
+      kind: HelmRelease
+  - path: https://raw.githubusercontent.com/grantok/flux/master/kubernetes/flux/config/patch-unraid-perms.yaml
+    target:
+      kind: HelmRelease

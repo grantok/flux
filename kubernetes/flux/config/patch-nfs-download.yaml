@@ -1,0 +1,9 @@
+---
+- op: add
+  path: /spec/values/persistence/downloads
+  value:
+    enabled: true
+    type: nfs
+    server: ${NAS_ADDR}
+    path: /mnt/user/downloads
+    mountPath: /downloads

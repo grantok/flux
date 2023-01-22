@@ -1,0 +1,9 @@
+---
+- op: add
+  path: /spec/values/persistence/tv
+  value:
+    enabled: true
+    type: nfs
+    server: ${NAS_ADDR}
+    path: /mnt/user/tv
+    mountPath: /tv

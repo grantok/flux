@@ -1,0 +1,8 @@
+---
+- op: add
+  path: /spec/values/podSecurityContext
+  value:
+      runAsUser: 99
+      runAsGroup: 100
+      fsGroup: 100
+      fsGroupChangePolicy: "OnRootMismatch"

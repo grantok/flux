@@ -5,35 +5,7 @@ metadata:
   name: &app sonarr
   namespace: media
 spec:
-  interval: 15m
-  chart:
-    spec:
-      chart: app-template
-      version: 1.2.1
-      sourceRef:
-        kind: HelmRepository
-        name: bjw-s
-        namespace: flux-system
-
-  # stateful set
-  maxHistory: 3
-  install:
-    createNamespace: true
-    remediation:
-      retries: 3
-  upgrade:
-    cleanupOnFail: true
-    remediation:
-      retries: 3
-  uninstall:
-    keepHistory: false
-
   values:
-    controller:
-      type: statefulset
-      annotations:
-        reloader.stakater.com/auto: "true"
-
     image:
       repository: ghcr.io/onedr0p/sonarr-develop
       tag: 4.0.0.359@sha256:c9260f98f6a1284ccc24ccc85b1ca01ed0042cafed1af573426da0c0912cb861
@@ -56,31 +28,13 @@ spec:
 
     ingress:
       main:
-        enabled: true
-        ingressClassName: nginx
         annotations:
           # cert-manager.io/cluster-issuer: letsencrypt-production
           nginx.ingress.kubernetes.io/configuration-snippet: |
             proxy_set_header Accept-Encoding "";
             sub_filter '</head>' '<link rel="stylesheet" type="text/css" href="https://theme-park.${SECRET_DOMAIN}/css/base/sonarr/${THEME}.css"></head>';
             sub_filter_once on;
-          hajimari.io/icon: mdi:television-classic
-        hosts:
-          - host: &host "{{ .Release.Name }}.${SECRET_DOMAIN}"
-            paths:
-              - path: /
-                pathType: Prefix
-        tls:
-          - hosts:
-              - *host
-
-    podSecurityContext:
-      runAsUser: 99
-      runAsGroup: 100
-      fsGroup: 100
-      fsGroupChangePolicy: "OnRootMismatch"
-      supplementalGroups:
-        - 100
+          hajimari.io/icon: mdi:television
 
     volumeClaimTemplates:
       - name: config
@@ -91,19 +45,7 @@ spec:
         labels:
           snapshot.home.arpa/enabled: "true"
 
-    persistence:
-      movies:
-        enabled: true
-        type: nfs
-        server: ${NAS_ADDR}
-        path: /mnt/user/tv
-        mountPath: /tv
-      downloads:
-        enabled: true
-        type: nfs
-        server: ${NAS_ADDR}
-        path: /mnt/user/downloads
-        mountPath: /downloads
+    # persistence:
       # scripts:
       #   enabled: true
       #   type: configMap
