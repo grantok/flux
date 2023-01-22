@@ -11,7 +11,7 @@
         namespace: flux-system
 - op: add
   path: /spec/values/ingress/main
-  value:
+  value: |-
     enabled: true
     ingressClassName: nginx
     hosts:
