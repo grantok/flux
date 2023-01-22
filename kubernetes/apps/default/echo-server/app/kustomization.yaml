@@ -5,10 +5,10 @@ namespace: default
 resources:
   - ./helmrelease.yaml
 patches:
-  - path: https://raw.githubusercontent.com/grantok/flux/master/kubernetes/flux/global_patches/patch-ss.yaml
+  - path: https://raw.githubusercontent.com/grantok/flux/master/kubernetes/flux/config/patch-ss.yaml
     target:
       name: echo-server
-  - path: https://raw.githubusercontent.com/grantok/flux/master/kubernetes/flux/global_patches/patch-externalapp.yaml
+  - path: https://raw.githubusercontent.com/grantok/flux/master/kubernetes/flux/config/patch-externalapp.yaml
     target:
       name: echo-server
   - target:
