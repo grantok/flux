@@ -5,5 +5,5 @@ namespace: default
 resources:
   - ./helmrelease.yaml
 patchesStrategicMerge:
-  - ../../../../patch-ss.yaml
-  - ../../../../patch-apptemplate.yaml
+  - ./patch-ss.yaml
+  - ./patch-apptemplate.yaml
