@@ -26,3 +26,6 @@
   value:
     replicas: 1
     strategy: RollingUpdate
+    type: statefulset
+    annotations:
+      reloader.stakater.com/auto: "true"
