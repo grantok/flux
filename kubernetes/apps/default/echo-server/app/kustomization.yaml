@@ -4,3 +4,6 @@ kind: Kustomization
 namespace: default
 resources:
   - ./helmrelease.yaml
+patchesStrategicMerge:
+  - ../../../../patch-ss.yaml
+  - ../../../../patch-apptemplate.yaml

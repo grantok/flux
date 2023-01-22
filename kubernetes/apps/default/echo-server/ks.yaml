@@ -6,8 +6,6 @@ metadata:
   namespace: flux-system
   labels:
     substitution.flux.home.arpa/enabled: "true"
-    substitution.flux.home.ss/enabled: "true"
-    substitution.flux.home.apptemplate/enabled: "true"
 spec:
   path: ./kubernetes/apps/default/echo-server/app
   prune: true
