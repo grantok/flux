@@ -9,7 +9,7 @@
         kind: HelmRepository
         name: bjw-s
         namespace: flux-system
-- op: replace
+- op: add
   path: /spec/values/ingress/main
   value:
     enabled: true
