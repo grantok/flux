@@ -27,13 +27,3 @@
   value:
     - hosts:
         - *host
-      # hosts:
-      #   # host: &host "{{ .Release.Name }}.${SECRET_DOMAIN}"
-      #   host: echo-server.monstersarereal.net
-      #   paths:
-      #     - path: /
-      #       pathType: Prefix
-      # tls:
-      #   - hosts:
-      #       # - *host
-      #       - echo-server.monstersarereal.net
