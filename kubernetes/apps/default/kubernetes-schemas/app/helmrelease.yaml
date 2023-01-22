@@ -1,5 +1,4 @@
 ---
-# yaml-language-server: $schema=http://kubernetes-schemas.monstersarereal.net/helmrelease_v2beta1.json
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
@@ -43,7 +42,7 @@ spec:
         enabled: true
         ingressClassName: nginx
         annotations:
-          cert-manager.io/cluster-issuer: letsencrypt-production
+          # cert-manager.io/cluster-issuer: letsencrypt-production
           external-dns.home.arpa/enabled: "true"
           hajimari.io/icon: mdi:code-json
         hosts:

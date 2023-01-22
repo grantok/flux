@@ -59,7 +59,7 @@ spec:
         enabled: true
         ingressClassName: nginx
         annotations:
-          cert-manager.io/cluster-issuer: letsencrypt-production
+          # cert-manager.io/cluster-issuer: letsencrypt-production
           nginx.ingress.kubernetes.io/configuration-snippet: |
             proxy_set_header Accept-Encoding "";
             sub_filter '</head>' '<link rel="stylesheet" type="text/css" href="https://theme-park.${SECRET_DOMAIN}/css/base/radarr/${THEME}.css"></head>';
@@ -73,7 +73,7 @@ spec:
         tls:
           - hosts:
               - *host
-            secretName: "radarr-tls"
+            # secretName: "radarr-tls"
 
     podSecurityContext:
       runAsUser: 99
