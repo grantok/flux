@@ -15,7 +15,7 @@ spec:
       BAZARR__PORT: &port 6767
     envFrom:
       - secretRef:
-          name: sonarr-secret
+          name: bazarr-secret
 
     service:
       main:
