@@ -6,3 +6,4 @@ resources:
   - ./namespace.yaml
   - ./kubernetes-dashboard/ks.yaml
   - ./uptime-kuma/ks.yaml
+  - ./goldilocks/ks.yaml
