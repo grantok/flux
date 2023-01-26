@@ -40,9 +40,11 @@ spec:
       namespaceSelector:
         matchNames:
           - default
-          - longhorn
+          - storage
           - security
           - media
+          - monitoring
+          - networking
     ingress:
       main:
         enabled: true
