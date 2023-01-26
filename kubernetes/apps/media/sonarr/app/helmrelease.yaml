@@ -55,6 +55,12 @@ spec:
       #   defaultMode: 0775
       #   readOnly: true
     persistence:
+      downloads:
+        enabled: true
+        existingClaim: nfs-downloads-pvc
+      tv:
+        enabled: true
+        existingClaim: nfs-tv-pvc
       incomplete:
         enabled: true
         type: emptyDir
