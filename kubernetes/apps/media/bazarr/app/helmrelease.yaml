@@ -42,6 +42,15 @@ spec:
           snapshot.home.arpa/enabled: "true"
 
     persistence:
+      downloads:
+        enabled: true
+        existingClaim: nfs-downloads-pvc
+      tv:
+        enabled: true
+        existingClaim: nfs-tv-pvc
+      movies:
+        enabled: true
+        existingClaim: nfs-movies-pvc
       add-ons:
         enabled: true
         type: emptyDir

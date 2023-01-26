@@ -40,6 +40,9 @@ spec:
           snapshot.home.arpa/enabled: "true"
 
     persistence:
+      calibre:
+        enabled: true
+        existingClaim: nfs-calibre-pvc
       cache:
         enabled: true
         type: emptyDir

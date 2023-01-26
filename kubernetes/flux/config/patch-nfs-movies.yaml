@@ -1,9 +1,0 @@
----
-- op: add
-  path: /spec/values/persistence/movies
-  value:
-    enabled: true
-    type: nfs
-    server: ${NAS_ADDR}
-    path: /mnt/user/movies
-    mountPath: /movies

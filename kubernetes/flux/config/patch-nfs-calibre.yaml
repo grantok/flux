@@ -1,9 +1,0 @@
----
-- op: add
-  path: /spec/values/persistence/calibre
-  value:
-    enabled: true
-    type: nfs
-    server: ${NAS_ADDR}
-    path: /mnt/user/calibre
-    mountPath: /calibre
