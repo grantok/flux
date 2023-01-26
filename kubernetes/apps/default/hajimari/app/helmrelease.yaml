@@ -46,6 +46,7 @@ spec:
           - media
           - monitoring
           - networking
+          - flux-system
     ingress:
       main:
         enabled: true
