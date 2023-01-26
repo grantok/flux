@@ -5,4 +5,5 @@ kind: Kustomization
 resources:
   - ./namespace.yaml
   - ./longhorn/ks.yaml
-  - ./nfs-pvc/*.yaml
+  - ./nfs-pvc/nfs-tv-pvc.yaml
+  - ./nfs-pvc/nfs-downloads-pvc.yaml
