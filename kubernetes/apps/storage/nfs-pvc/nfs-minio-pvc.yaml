@@ -16,7 +16,6 @@ spec:
     path: "/mnt/user/minio"
   mountOptions:
     - nfsvers=4.2
-    - nconnect=8
     - tcp
     - intr
     - hard
