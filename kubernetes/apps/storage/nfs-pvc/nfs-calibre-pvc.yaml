@@ -3,7 +3,7 @@ apiVersion: v1
 kind: PersistentVolume
 metadata:
   name: nfs-calibre-pv
-  namespace: storage
+  namespace: media
 spec:
   storageClassName: media-calibre
   capacity:
@@ -27,7 +27,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: nfs-calibre-pvc
-  namespace: storage
+  namespace: media
 spec:
   accessModes:
     - ReadWriteMany
