@@ -2,10 +2,10 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: nfs-minio-pv
+  name: nfs-minio
   namespace: storage
 spec:
-  storageClassName: media-minio
+  storageClassName: nfs-minio
   capacity:
     storage: 1Mi
   accessModes:
@@ -26,12 +26,12 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: nfs-minio-pvc
+  name: nfs-minio
   namespace: storage
 spec:
   accessModes:
     - ReadWriteMany
-  storageClassName: media-minio
+  storageClassName: nfs-minio
   resources:
     requests:
       storage: 1Mi

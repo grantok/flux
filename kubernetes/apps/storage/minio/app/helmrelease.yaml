@@ -120,7 +120,7 @@ spec:
     persistence:
       config:
         enabled: true
-        existingClaim: nfs-minio-pvc
+        existingClaim: nfs-minio
         mountPath: /data
 
     resources:
