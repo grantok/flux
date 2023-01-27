@@ -1,0 +1,25 @@
+---
+# yaml-language-server: $schema=https://json.schemastore.org/kustomization
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: media
+resources:
+  - ./helmrelease.yaml
+# configMapGenerator:
+#   - name: radarr-configmap
+#     files:
+#       - ./scripts/pushover-notify.sh
+generatorOptions:
+  disableNameSuffixHash: true
+  annotations:
+    kustomize.toolkit.fluxcd.io/substitute: disabled
+patches:
+  - path: https://raw.githubusercontent.com/grantok/flux/master/kubernetes/flux/config/patch-ss.yaml
+    target:
+      kind: HelmRelease
+  - path: https://raw.githubusercontent.com/grantok/flux/master/kubernetes/flux/config/patch-chart-with-ingress.yaml
+    target:
+      kind: HelmRelease
+  - path: https://raw.githubusercontent.com/grantok/flux/master/kubernetes/flux/config/patch-unraid-perms.yaml
+    target:
+      kind: HelmRelease

@@ -1,0 +1,72 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: node-feature-discovery
+  namespace: kube-system
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: node-feature-discovery
+      version: 0.12.1
+      sourceRef:
+        kind: HelmRepository
+        name: node-feature-discovery
+        namespace: flux-system
+  maxHistory: 3
+  install:
+    createNamespace: true
+    crds: CreateReplace
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    crds: CreateReplace
+    remediation:
+      retries: 3
+  uninstall:
+    keepHistory: false
+  values:
+    tolerations:
+      - key: "kubernetes.io/arch"
+        operator: "Equal"
+        value: "arm64"
+        effect: "NoSchedule"
+
+    worker:
+      config:
+        core:
+          sources: ["custom", "pci", "usb"]
+        sources:
+          usb:
+            deviceClassWhitelist: ["02", "03", "0e", "ef", "fe", "ff"]
+            deviceLabelFields: ["class", "vendor", "device"]
+          custom:
+            - name: "usb.zwave"
+              matchOn:
+                - usbId:
+                    class: {op: In, value: ["02", "ff"]}
+                    vendor: {op: In, value: ["0658", "10c4"]}
+                    device: {op: In, value: ["0200", "ea60"]}
+            - name: "intel-gpu"
+              matchOn:
+                - pciId:
+                    class: ["0300"]
+                    vendor: ["8086"]
+            - name: "coral-tpu"
+              matchOn:
+                - usbId:
+                    vendor: ["1a6e", "18d1"]
+            - name: "zwave"
+              matchOn:
+                - usbId:
+                    class: ["02"]
+                    vendor: ["0658"]
+                    device: ["0200"]
+            - name: "zigbee"
+              matchOn:
+                - usbId:
+                    class: ["ff"]
+                    vendor: ["1a86"]
+                    device: ["7523"]
