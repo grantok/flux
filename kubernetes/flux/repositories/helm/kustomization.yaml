@@ -18,3 +18,4 @@ resources:
   - ./weave-gitops.yaml
   - ./fairwinds.yaml
   - ./nfs-subdir-external-provisioner.yaml
+  - ./node-feature-discovery.yaml
