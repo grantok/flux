@@ -17,3 +17,4 @@ resources:
   - ./stakater.yaml
   - ./weave-gitops.yaml
   - ./fairwinds.yaml
+  - ./nfs-subdir-external-provisioner.yaml

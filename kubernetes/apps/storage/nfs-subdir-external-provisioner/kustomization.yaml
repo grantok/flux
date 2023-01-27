@@ -1,0 +1,13 @@
+---
+# yaml-language-server: $schema=https://json.schemastore.org/kustomization
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - ./helmrelease.yaml
+patches:
+  - path: https://raw.githubusercontent.com/grantok/flux/master/kubernetes/flux/config/patch-ss.yaml
+    target:
+      kind: HelmRelease
+  - path: https://raw.githubusercontent.com/grantok/flux/master/kubernetes/flux/config/patch-unraid-perms.yaml
+    target:
+      kind: HelmRelease

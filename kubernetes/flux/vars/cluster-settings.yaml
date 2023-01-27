@@ -12,3 +12,4 @@ data:
   METALLB_INGRESS_ADDR: "10.173.254.81"
   NAS_ADDR: "10.173.254.10"
   THEME: "space-gray"
+  NFS_PATH_PATTERN: "${.PVC.namespace}-${.PVC.name}"
