@@ -104,7 +104,7 @@ spec:
           nginx.ingress.kubernetes.io/proxy-request-buffering: "off"
           nginx.ingress.kubernetes.io/configuration-snippet: |
             chunked_transfer_encoding off;
-          hajimari.io/enable: "false"
+          hajimari.io/enable: "true"
         hosts:
           - host: &host-api "s3.${SECRET_DOMAIN}"
             paths:
