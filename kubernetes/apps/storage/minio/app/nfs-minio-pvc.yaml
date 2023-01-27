@@ -16,11 +16,8 @@ spec:
     path: "/mnt/user/minio"
   mountOptions:
     - nfsvers=4.2
-    - tcp
-    - intr
     - hard
     - noatime
-    - nodiratime
     - noserverino
 ---
 apiVersion: v1
