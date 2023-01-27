@@ -25,4 +25,4 @@ spec:
     storageClass:
       name: nfs-kube
       defaultClass: false
-      pathPattern: "${NFS_PATH_PATTERN}"
+      pathPattern: "${.PVC.namespace}-${.PVC.name}"
