@@ -4,10 +4,6 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
   - ./namespace.yaml
+  - ./nfs-pvc/ks.yaml
   - ./longhorn/ks.yaml
   - ./minio/ks.yaml
-  - ./nfs-pvc/nfs-tv-pvc.yaml
-  - ./nfs-pvc/nfs-downloads-pvc.yaml
-  - ./nfs-pvc/nfs-movies-pvc.yaml
-  - ./nfs-pvc/nfs-calibre-pvc.yaml
-  - ./nfs-pvc/nfs-minio-pvc.yaml
