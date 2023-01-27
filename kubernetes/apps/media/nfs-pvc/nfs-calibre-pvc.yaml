@@ -21,7 +21,6 @@ spec:
     - hard
     - noatime
     - nodiratime
-    - noserverino
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim

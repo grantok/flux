@@ -16,9 +16,11 @@ spec:
     path: "/mnt/user/minio"
   mountOptions:
     - nfsvers=4.2
+    - tcp
+    - intr
     - hard
     - noatime
-    - noserverino
+    - nodiratime
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
