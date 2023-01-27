@@ -5,6 +5,7 @@ kind: Kustomization
 namespace: media
 resources:
   - ./externalsecret.yaml
+  - ./nfs-downloads-pvc.yaml
   - ./helmrelease.yaml
 patches:
   - path: https://raw.githubusercontent.com/grantok/flux/master/kubernetes/flux/config/patch-ss.yaml

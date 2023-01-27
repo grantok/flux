@@ -5,6 +5,7 @@ kind: Kustomization
 namespace: media
 resources:
   - ./externalsecret.yaml
+  - ./nfs-movies-pvc.yaml
   - ./helmrelease.yaml
 # configMapGenerator:
 #   - name: radarr-configmap

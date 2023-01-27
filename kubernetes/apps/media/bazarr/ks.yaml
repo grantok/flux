@@ -10,6 +10,9 @@ spec:
   dependsOn:
     - name: cluster-apps-external-secrets-stores
     - name: cluster-apps-longhorn
+    - name: cluster-apps-sabnzbd
+    - name: cluster-apps-radarr
+    - name: cluster-apps-sonarr
   path: ./kubernetes/apps/media/bazarr/app
   prune: true
   sourceRef:
