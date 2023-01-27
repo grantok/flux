@@ -42,7 +42,7 @@ spec:
     persistence:
       calibre:
         enabled: true
-        existingClaim: nfs-calibre-pvc
+        existingClaim: nfs-calibre
       cache:
         enabled: true
         type: emptyDir

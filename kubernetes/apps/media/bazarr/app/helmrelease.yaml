@@ -44,13 +44,13 @@ spec:
     persistence:
       downloads:
         enabled: true
-        existingClaim: nfs-downloads-pvc
+        existingClaim: nfs-downloads
       tv:
         enabled: true
-        existingClaim: nfs-tv-pvc
+        existingClaim: nfs-tv
       movies:
         enabled: true
-        existingClaim: nfs-movies-pvc
+        existingClaim: nfs-movies
       add-ons:
         enabled: true
         type: emptyDir

@@ -59,7 +59,7 @@ spec:
     persistence:
       downloads:
         enabled: true
-        existingClaim: nfs-downloads-pvc
+        existingClaim: nfs-downloads
       incomplete:
         enabled: true
         type: emptyDir

@@ -56,10 +56,10 @@ spec:
     persistence:
       downloads:
         enabled: true
-        existingClaim: nfs-downloads-pvc
+        existingClaim: nfs-downloads
       movies:
         enabled: true
-        existingClaim: nfs-movies-pvc
+        existingClaim: nfs-movies
       incomplete:
         enabled: true
         type: emptyDir
