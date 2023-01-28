@@ -33,6 +33,19 @@ spec:
       serverIP: tdarr.media
       serverPort: 8266
 
+    ingress:
+      main:
+        enabled: true
+        ingressClassName: nginx
+        hosts:
+          - host: &host "{{ .Release.Name }}.${SECRET_DOMAIN}"
+            paths:
+              - path: /
+                pathType: Prefix
+        tls:
+          - hosts:
+              - *host
+
     service:
       main:
         ports:
