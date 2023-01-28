@@ -3,6 +3,9 @@
   path: /spec/interval
   value: 15m
 - op: add
+  path: /spec/timeout
+  value: 2m
+- op: add
   path: /spec/maxHistory
   value: 3
 - op: add
