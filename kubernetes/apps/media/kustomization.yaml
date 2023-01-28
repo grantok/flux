@@ -11,4 +11,4 @@ resources:
   - ./tautulli/ks.yaml
   - ./bazarr/ks.yaml
   - ./calibre-web/ks.yaml
-  - ./tdarr/ks.yaml
+  # - ./tdarr/ks.yaml
