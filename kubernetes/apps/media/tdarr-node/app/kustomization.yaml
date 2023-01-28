@@ -6,18 +6,11 @@ namespace: media
 resources:
   - ./nfs-tdarr-cache-pvc.yaml
   - ./helmrelease.yaml
-# configMapGenerator:
-#   - name: radarr-configmap
-#     files:
-#       - ./scripts/pushover-notify.sh
 generatorOptions:
   disableNameSuffixHash: true
   annotations:
     kustomize.toolkit.fluxcd.io/substitute: disabled
 patches:
-  - path: https://raw.githubusercontent.com/grantok/flux/master/kubernetes/flux/config/patch-ss.yaml
-    target:
-      kind: HelmRelease
   - path: https://raw.githubusercontent.com/grantok/flux/master/kubernetes/flux/config/patch-chart-with-ingress.yaml
     target:
       kind: HelmRelease
