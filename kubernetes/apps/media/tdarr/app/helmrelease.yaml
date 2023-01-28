@@ -109,5 +109,5 @@ spec:
             mountPath: /tv
           - name: movies
             mountPath: /movies
-          - name: cache
+          - name: tcache
             mountPath: /tcache
