@@ -44,7 +44,7 @@ spec:
 
     ingress:
       main:
-        enabled: true
+        enabled: false
         ingressClassName: nginx
         hosts:
           - host: &host "{{ .Release.Name }}.${SECRET_DOMAIN}"
