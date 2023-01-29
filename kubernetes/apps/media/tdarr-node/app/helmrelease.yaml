@@ -56,10 +56,11 @@ spec:
               - *host
 
     service:
+      enabled: false
       main:
         ports:
           http:
-            enabled: false
+            port: 8265
 
     volumeClaimTemplates:
       - name: config
