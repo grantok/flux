@@ -41,6 +41,8 @@ spec:
       TZ: ${TIMEZONE}
       serverIP: tdarr.media
       serverPort: 8266
+      NVIDIA_DRIVER_CAPABILITIES: "all"
+      NVIDIA_VISIBLE_DEVICE: "all"
 
     ingress:
       main:

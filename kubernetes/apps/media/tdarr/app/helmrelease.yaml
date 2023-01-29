@@ -12,6 +12,8 @@ spec:
 
     env:
       TZ: ${TIMEZONE}
+      NVIDIA_DRIVER_CAPABILITIES: "all"
+      NVIDIA_VISIBLE_DEVICE: "all"
 
     service:
       main:

@@ -32,3 +32,4 @@ ubuntu:
     - python3-kubernetes
     - python3-yaml
     - nfs-common
+    - nvidia-docker2
