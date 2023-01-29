@@ -6,7 +6,7 @@ metadata:
   namespace: media
 spec:
   interval: 15m
-  timeout: 2m
+  timeout: 3m
   chart:
     spec:
       chart: app-template
