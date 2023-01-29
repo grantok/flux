@@ -56,8 +56,8 @@ spec:
               - *host
 
     service:
-      enabled: "false"
       main:
+        enabled: "false"
         ports:
           http:
             port: 8265
