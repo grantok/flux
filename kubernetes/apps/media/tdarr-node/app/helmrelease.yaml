@@ -57,7 +57,9 @@ spec:
 
     service:
       main:
-        enabled: true
+        ports:
+          http:
+            enabled: false
 
     volumeClaimTemplates:
       - name: config
