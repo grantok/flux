@@ -120,4 +120,4 @@ spec:
                   values:
                     - "tdarr"
                     - "tdarr-node"
-              topologyKey: "kubernetes.io/hostname"
+            topologyKey: "kubernetes.io/hostname"
