@@ -56,7 +56,7 @@ spec:
               - *host
 
     service:
-      enabled: false
+      enabled: "false"
       main:
         ports:
           http:
