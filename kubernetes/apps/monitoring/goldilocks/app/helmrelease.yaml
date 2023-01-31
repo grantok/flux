@@ -21,6 +21,10 @@ spec:
           memory: 145M
         limits:
           memory: 174M
+    vpa:
+      enabled: true
+      updater:
+        enabled: false
     dashboard:
       replicaCount: 1
       ingress:
