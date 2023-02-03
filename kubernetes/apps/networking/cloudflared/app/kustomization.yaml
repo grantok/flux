@@ -3,6 +3,6 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: networking
 resources:
-  - ./helmrelease.yaml
-  - ./cloudflared-config.yaml
   - ./external-secret.yaml
+  - ./cloudflared-config.yaml
+  - ./helmrelease.yaml
