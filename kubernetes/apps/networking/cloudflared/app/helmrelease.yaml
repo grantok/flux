@@ -29,19 +29,23 @@ spec:
     image:
       repository: cloudflare/cloudflared
       tag: latest
-    envFrom:
-      - secretRef:
-          name: cloudflared-secret
+
+    # envFrom:
+    #   - secretRef:
+    #       name: cloudflared-secret
 
     env:
       TZ: "${TIMEZONE}"
+      TUNNEL_TOKEN:
+        valueFrom:
+          secretKeyRef:
+            name: cloudflared-secret
+            key: token
 
     args:
       - tunnel
       - --config
       - /etc/cloudflared/config/config.yaml
-      - --token
-      - ${token}
       - run
 
     ingress:
