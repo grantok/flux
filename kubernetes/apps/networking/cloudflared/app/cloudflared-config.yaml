@@ -11,7 +11,7 @@ metadata:
 data:
   config.yaml: |
     # Name of the tunnel you want to run
-    tunnel: k8s-ingress
+    tunnel: 0725567c-2542-46ed-8003-44196c68e69b
     # credentials-file: /etc/cloudflared/creds/credentials.json
     # Serves the metrics server under /metrics and the readiness server under /ready
     metrics: 0.0.0.0:2000
