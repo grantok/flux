@@ -20,7 +20,6 @@ spec:
     ingress:
       main:
         annotations:
-          external-dns.home.arpa/enabled: "false"
           hajimari.io/enable: "true"
           hajimari.io/icon: brightness-6
 
