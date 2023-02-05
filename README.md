@@ -547,7 +547,7 @@ The world is your cluster, have at it!
 
 ## Github personal access token
 git remote -v
-git remote set-url origin https://TOKEN@github.com/user/repo.git
+git remote set-url origin https://username:TOKEN@github.com/user/repo.git
 
 ## 🤝 Thanks
 
