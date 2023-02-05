@@ -545,6 +545,10 @@ You should be able to access the dashboard at `https://kubernetes.${SECRET_DOMAI
 
 The world is your cluster, have at it!
 
+## Github personal access token
+git remote -v
+git remote set-url origin https://TOKEN@github.com/user/repo.git
+
 ## 🤝 Thanks
 
 Big shout out to all the authors and contributors to the projects that we are using in this repository.
