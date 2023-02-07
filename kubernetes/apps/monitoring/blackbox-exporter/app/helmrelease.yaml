@@ -39,6 +39,8 @@ spec:
     ingress:
       enabled: true
       className: nginx
+      annotations:
+        hajimari.io/icon: alarm-bell
       hosts:
         - host: &host "blackbox.${SECRET_DOMAIN}"
           paths:

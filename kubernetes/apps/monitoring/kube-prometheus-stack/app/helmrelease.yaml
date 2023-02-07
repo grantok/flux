@@ -129,8 +129,10 @@ spec:
         enabled: true
         ingressClassName: nginx
         pathType: Prefix
+        annotations:
+          hajimari.io/icon: fire-circle
         hosts:
-          - &host_prometheus "prometheus-cluster-0.${SECRET_DOMAIN}"
+          - &host_prometheus "prometheus.${SECRET_DOMAIN}"
         tls:
           - hosts:
               - *host_prometheus

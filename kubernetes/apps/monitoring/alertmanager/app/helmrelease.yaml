@@ -50,6 +50,8 @@ spec:
     ingress:
       enabled: true
       className: "nginx"
+      annotations:
+        hajimari.io/icon: alarm
       hosts:
         - host: &host "alertmanager.${SECRET_DOMAIN}"
           paths:

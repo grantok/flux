@@ -30,6 +30,8 @@ spec:
         enabled: true
         hostname: "thanos.${SECRET_DOMAIN}"
         ingressClassName: "nginx"
+        annotations:
+          hajimari.io/icon: mixed-martial-arts
         tls: true
       replicaLabels:
         - "__replica__" # must match with kube-prometheus-stack value `.prometheus.prometheusSpec.replicaExternalLabelName`
