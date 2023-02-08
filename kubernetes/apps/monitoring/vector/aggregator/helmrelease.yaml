@@ -48,14 +48,14 @@ spec:
           journald-logs:
             enabled: true
             port: 6002
-          talos-kernel:
-            enabled: true
-            port: 6050
-            protocol: UDP
-          talos-service:
-            enabled: true
-            port: 6051
-            protocol: UDP
+          # talos-kernel:
+          #   enabled: true
+          #   port: 6050
+          #   protocol: UDP
+          # talos-service:
+          #   enabled: true
+          #   port: 6051
+          #   protocol: UDP
 
     persistence:
       config:

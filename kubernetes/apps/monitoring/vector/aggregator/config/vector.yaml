@@ -29,23 +29,23 @@ sources:
   vector_metrics:
     type: internal_metrics
 
-  talos_kernel_logs:
-    address: 0.0.0.0:6050
-    type: socket
-    mode: udp
-    max_length: 102400
-    decoding:
-      codec: json
-    host_key: __host
+  # talos_kernel_logs:
+  #   address: 0.0.0.0:6050
+  #   type: socket
+  #   mode: udp
+  #   max_length: 102400
+  #   decoding:
+  #     codec: json
+  #   host_key: __host
 
-  talos_service_logs:
-    address: 0.0.0.0:6051
-    type: socket
-    mode: udp
-    max_length: 102400
-    decoding:
-      codec: json
-    host_key: __host
+  # talos_service_logs:
+  #   address: 0.0.0.0:6051
+  #   type: socket
+  #   mode: udp
+  #   max_length: 102400
+  #   decoding:
+  #     codec: json
+  #   host_key: __host
 
 # Transformations
 transforms:
@@ -127,35 +127,35 @@ sinks:
     labels:
       hostname: '{{ host }}'
 
-  talos_kernel:
-    type: loki
-    inputs:
-      - talos_kernel_logs_xform
-    endpoint: http://loki-gateway.monitoring.svc.cluster.local:80
-    encoding:
-      codec: json
-      except_fields:
-        - __host
-    batch:
-      max_bytes: 1048576
-    out_of_order_action: rewrite_timestamp
-    labels:
-      hostname: '{{ __host }}'
-      service: '{{ facility }}'
+  # talos_kernel:
+  #   type: loki
+  #   inputs:
+  #     - talos_kernel_logs_xform
+  #   endpoint: http://loki-gateway.monitoring.svc.cluster.local:80
+  #   encoding:
+  #     codec: json
+  #     except_fields:
+  #       - __host
+  #   batch:
+  #     max_bytes: 1048576
+  #   out_of_order_action: rewrite_timestamp
+  #   labels:
+  #     hostname: '{{ __host }}'
+  #     service: '{{ facility }}'
 
-  talos_service:
-    type: loki
-    inputs:
-      - talos_service_logs_xform
-    endpoint: http://loki-gateway.monitoring.svc.cluster.local:80
-    encoding:
-      codec: json
-      except_fields:
-        - __host
-    batch:
-      max_bytes: 524288
-    out_of_order_action: rewrite_timestamp
-    labels:
-      hostname: '{{ __host }}'
-      service: "talos-service"
-      namespace: "talos:service"
+  # talos_service:
+  #   type: loki
+  #   inputs:
+  #     - talos_service_logs_xform
+  #   endpoint: http://loki-gateway.monitoring.svc.cluster.local:80
+  #   encoding:
+  #     codec: json
+  #     except_fields:
+  #       - __host
+  #   batch:
+  #     max_bytes: 524288
+  #   out_of_order_action: rewrite_timestamp
+  #   labels:
+  #     hostname: '{{ __host }}'
+  #     service: "talos-service"
+  #     namespace: "talos:service"
