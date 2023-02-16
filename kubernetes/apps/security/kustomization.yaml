@@ -8,3 +8,4 @@ resources:
   # Flux-Kustomizations
   - ./external-secrets/ks.yaml
   - ./cyberchef/ks.yaml
+  - ./authentik/ks.yaml
