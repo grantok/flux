@@ -35,7 +35,7 @@ spec:
         reloader.stakater.com/auto: "true"
     image:
       repository: haveagitgat/tdarr_node
-      tag: 2.00.24
+      tag: 2.00.25
 
     env:
       TZ: ${TIMEZONE}
