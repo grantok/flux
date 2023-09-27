@@ -9,3 +9,7 @@ resources:
   - ./clustersecretstore.yaml
 patchesStrategicMerge:
   - ./patches/sync.yaml
+patches:
+  - path: https://raw.githubusercontent.com/grantok/flux/master/kubernetes/flux/config/patch-chart-with-ingress.yaml
+    target:
+      kind: HelmRelease
