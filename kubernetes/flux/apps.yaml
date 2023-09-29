@@ -41,4 +41,5 @@ spec:
       target:
         group: kustomize.toolkit.fluxcd.io
         kind: Kustomization
+        version: v1
         labelSelector: substitution.flux.home.arpa/disabled notin (true)
