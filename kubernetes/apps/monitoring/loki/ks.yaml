@@ -5,6 +5,7 @@ metadata:
   name: cluster-apps-loki
   namespace: flux-system
 spec:
+  suspend: true
   interval: 10m
   path: ./kubernetes/apps/monitoring/loki/app
   prune: true

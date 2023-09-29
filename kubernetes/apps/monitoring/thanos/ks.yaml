@@ -6,6 +6,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 10m
+  suspend: true
   path: ./kubernetes/apps/monitoring/thanos/app
   prune: true
   sourceRef:
