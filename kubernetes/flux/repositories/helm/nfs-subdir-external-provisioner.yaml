@@ -1,6 +1,6 @@
 ---
 # Temporary until official helm repo is created for nfs-client-provisioner
-apiVersion: source.toolkit.fluxcd.io/v1beta1
+apiVersion: source.toolkit.fluxcd.io/v1beta1beta2
 kind: HelmRepository
 metadata:
   name: nfs-subdir-external-provisioner
