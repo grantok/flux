@@ -18,7 +18,7 @@
 - op: add
   path: /spec/values/ingress/main/hosts
   value:
-    - host: &host "{{ .Release.Name }}.${SECRET_DOMAIN}"
+    - host: &host "{{ .Release.Name }}.monstersarereal.net"
       paths:
         - path: /
           pathType: Prefix
